@@ -7,19 +7,162 @@ var inputSequence = [];
 var difficulty = 2;
 var delayTime = 1000;
 
+var presses = 0;
+
 function setup() 
 {
-	createCanvas(1030,200);
+	createCanvas(1030,300);
 }
 
-function draw() 
+function startClicking(event)
 {
-	
+	if (event.keyCode == 37) 
+    {
+    	if(sequence[presses] == 4) // If correct
+    	{
+    		stroke('#e2ea88');
+			fill('#b6c138');
+			rect(100 * (presses + 1),30,100,100);
+			fill('#e2ea88');
+    	}
+    	else
+    	{
+    		stroke('#ea9588');
+			fill('#992a1a');
+			rect(100 * (presses + 1),30,100,100);
+			fill('#ea9588');
+    	}
+
+    	triangle(100 * (presses + 1) + 80, 50, 100 * (presses + 1) + 80, 110, 100 * (presses + 1) + 20, 80);
+    	
+		presses++;
+
+    	if(presses > sequenceLength - 1)
+		{
+			document.removeEventListener('keydown',startClicking);
+			showActual();
+		}
+    } 
+    else if (event.keyCode == 38)
+    {
+    	if(sequence[presses] == 1) // If correct
+    	{
+    		stroke('#e2ea88');
+			fill('#b6c138');
+			rect(100 * (presses + 1),30,100,100);
+			fill('#e2ea88');
+    	}
+    	else
+    	{
+    		stroke('#ea9588');
+			fill('#992a1a');
+			rect(100 * (presses + 1),30,100,100);
+			fill('#ea9588');
+    	}
+
+		triangle(100 * (presses + 1) + 80, 110, 100 * (presses + 1) + 20, 110, 100 * (presses + 1) + 50, 50);
+
+    	presses++;
+
+    	if(presses > sequenceLength - 1)
+		{
+			document.removeEventListener('keydown',startClicking);
+			showActual();
+		}
+    }
+    else if (event.keyCode == 39)
+    {
+    	if(sequence[presses] == 2) // If correct
+    	{
+    		stroke('#e2ea88');
+			fill('#b6c138');
+			rect(100 * (presses + 1),30,100,100);
+			fill('#e2ea88');
+    	}
+    	else
+    	{
+    		stroke('#ea9588');
+			fill('#992a1a');
+			rect(100 * (presses + 1),30,100,100);
+			fill('#ea9588');
+    	}
+
+    	triangle(100 * (presses + 1) + 20, 50, 100 * (presses + 1) + 20, 110, 100 * (presses + 1) + 80, 80);
+
+    	presses++;
+
+    	if(presses > sequenceLength - 1)
+		{
+			document.removeEventListener('keydown',startClicking);
+			showActual();
+		}
+    }
+    else if (event.keyCode == 40)
+    {
+    	if(sequence[presses] == 3) // If correct
+    	{
+    		stroke('#e2ea88');
+			fill('#b6c138');
+			rect(100 * (presses + 1),30,100,100);
+			fill('#e2ea88');
+    	}
+    	else
+    	{
+    		stroke('#ea9588');
+			fill('#992a1a');
+			rect(100 * (presses + 1),30,100,100);
+			fill('#ea9588');
+    	}
+
+    	triangle(100 * (presses + 1) + 80, 50, 100 * (presses + 1) + 20, 50, 100 * (presses + 1) + 50, 110);
+
+    	presses++;
+
+    	if(presses > sequenceLength - 1)
+		{
+			document.removeEventListener('keydown',startClicking);
+			showActual();
+		}
+    }
 }
 
-function generateSequence() 
+function drawInput() 
 {
+	document.addEventListener('keydown', startClicking);
+}
 
+function showActual()
+{
+	stroke('#f7e6a0');
+
+	for (var i = 0; i < sequenceLength; i++) 
+	{
+		fill('#efc313');
+		rect(100 * (i + 1),30 + 120,100,100);
+		fill('#f7e6a0');
+
+		switch(sequence[i]) 
+		{
+			case 1:
+				// Up arrow
+				triangle(100 * (i + 1) + 80, 110 + 120, 100 * (i + 1) + 20, 110 + 120, 100 * (i + 1) + 50, 50 + 120);
+				break;
+			case 2:
+				// Right arrow
+				triangle(100 * (i + 1) + 20, 50 + 120, 100 * (i + 1) + 20, 110 + 120, 100 * (i + 1) + 80, 80 + 120);
+				break;
+			case 3:
+				// Down arrow
+				triangle(100 * (i + 1) + 80, 50 + 120, 100 * (i + 1) + 20, 50 + 120, 100 * (i + 1) + 50, 110 + 120);
+				break;
+			case 4:
+				// Left arrow
+				triangle(100 * (i + 1) + 80, 50 + 120, 100 * (i + 1) + 80, 110 + 120, 100 * (i + 1) + 20, 80 + 120);
+				break;
+			default:
+				alert("You've messed up");
+		}
+	}
 }
 
 // To-do
@@ -28,8 +171,12 @@ function generateSequence()
 //
 function drawSequence() 
 {
+	clear(); 
+	document.removeEventListener('keydown',startClicking);
+	presses = 0;
+
 	sequenceLength = parseInt(document.getElementById("seqLength").value);
-	
+
 	strokeWeight(1);
 	stroke('#ffffff');
 
@@ -63,7 +210,8 @@ function drawSequence()
 				alert("You've messed up");
 		}
 	}
-	setTimeout(function(){clear();}, delayTime);
+
+	setTimeout(function(){clear(); drawInput();}, delayTime);
 }
 
 function roll() 
