@@ -10,6 +10,7 @@ How to play:
 * Click start to generate the sequence. After some time has elapsed, you will be able to input the keys.
 * Green tiles represent correct inputs.
 * Red tiles represent incorrect inputs.
+* Don't worry if you mess up! You're still allowed to enter the next inputs even if you get a red tile.
 
 To do:
 * Add scoring system
