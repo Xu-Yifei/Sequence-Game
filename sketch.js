@@ -1,5 +1,5 @@
 // Game currently only supports sequences of length up to 9
-var sequenceLength = 5;
+var sequenceLength;
 
 var sequence = [];
 var inputSequence = [];
@@ -28,6 +28,8 @@ function generateSequence()
 //
 function drawSequence() 
 {
+	sequenceLength = parseInt(document.getElementById("seqLength").value);
+	
 	strokeWeight(1);
 	stroke('#ffffff');
 
