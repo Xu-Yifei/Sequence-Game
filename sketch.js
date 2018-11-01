@@ -11,38 +11,38 @@ var presses = 0;
 
 function setup() 
 {
-	createCanvas(1030,200);
+	createCanvas(1030,300);
 }
 
 function startClicking(event)
 {
 	if (event.keyCode == 37) 
-   	{
-		if(sequence[presses] == 4) // If correct
-		{
-			stroke('#e2ea88');
+    {
+    	if(sequence[presses] == 4) // If correct
+    	{
+    		stroke('#e2ea88');
 			fill('#b6c138');
 			rect(100 * (presses + 1),30,100,100);
 			fill('#e2ea88');
-		}
-		else
-		{
-			stroke('#ea9588');
+    	}
+    	else
+    	{
+    		stroke('#ea9588');
 			fill('#992a1a');
 			rect(100 * (presses + 1),30,100,100);
 			fill('#ea9588');
-		}
+    	}
 
-    		triangle(100 * (presses + 1) + 80, 50, 100 * (presses + 1) + 80, 110, 100 * (presses + 1) + 20, 80);
+    	triangle(100 * (presses + 1) + 80, 50, 100 * (presses + 1) + 80, 110, 100 * (presses + 1) + 20, 80);
     	
 		presses++;
 
-    		if(presses > sequenceLength - 1)
+    	if(presses > sequenceLength - 1)
 		{
 			document.removeEventListener('keydown',startClicking);
-			presses = 0;
+			showActual();
 		}
-    	} 
+    } 
     else if (event.keyCode == 38)
     {
     	if(sequence[presses] == 1) // If correct
@@ -67,7 +67,7 @@ function startClicking(event)
     	if(presses > sequenceLength - 1)
 		{
 			document.removeEventListener('keydown',startClicking);
-			presses = 0;
+			showActual();
 		}
     }
     else if (event.keyCode == 39)
@@ -94,7 +94,7 @@ function startClicking(event)
     	if(presses > sequenceLength - 1)
 		{
 			document.removeEventListener('keydown',startClicking);
-			presses = 0;
+			showActual();
 		}
     }
     else if (event.keyCode == 40)
@@ -121,7 +121,7 @@ function startClicking(event)
     	if(presses > sequenceLength - 1)
 		{
 			document.removeEventListener('keydown',startClicking);
-			presses = 0;
+			showActual();
 		}
     }
 }
@@ -131,7 +131,39 @@ function drawInput()
 	document.addEventListener('keydown', startClicking);
 }
 
+function showActual()
+{
+	stroke('#f7e6a0');
 
+	for (var i = 0; i < sequenceLength; i++) 
+	{
+		fill('#efc313');
+		rect(100 * (i + 1),30 + 120,100,100);
+		fill('#f7e6a0');
+
+		switch(sequence[i]) 
+		{
+			case 1:
+				// Up arrow
+				triangle(100 * (i + 1) + 80, 110 + 120, 100 * (i + 1) + 20, 110 + 120, 100 * (i + 1) + 50, 50 + 120);
+				break;
+			case 2:
+				// Right arrow
+				triangle(100 * (i + 1) + 20, 50 + 120, 100 * (i + 1) + 20, 110 + 120, 100 * (i + 1) + 80, 80 + 120);
+				break;
+			case 3:
+				// Down arrow
+				triangle(100 * (i + 1) + 80, 50 + 120, 100 * (i + 1) + 20, 50 + 120, 100 * (i + 1) + 50, 110 + 120);
+				break;
+			case 4:
+				// Left arrow
+				triangle(100 * (i + 1) + 80, 50 + 120, 100 * (i + 1) + 80, 110 + 120, 100 * (i + 1) + 20, 80 + 120);
+				break;
+			default:
+				alert("You've messed up");
+		}
+	}
+}
 
 // To-do
 // -Clean up the algorithm for finding points of triangle
@@ -139,6 +171,10 @@ function drawInput()
 //
 function drawSequence() 
 {
+	clear(); 
+	document.removeEventListener('keydown',startClicking);
+	presses = 0;
+
 	sequenceLength = parseInt(document.getElementById("seqLength").value);
 
 	strokeWeight(1);
@@ -174,6 +210,7 @@ function drawSequence()
 				alert("You've messed up");
 		}
 	}
+
 	setTimeout(function(){clear(); drawInput();}, delayTime);
 }
 
