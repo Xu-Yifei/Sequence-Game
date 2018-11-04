@@ -8,14 +8,16 @@
         <script src="sketch.js"></script>
         </head>
     <body>
+        Note: This game is not optimized for mobile.<br>
         Difficulty:
         <button onclick="drawSequence()">Start</button>
         <button onclick="setDifficulty(1)">Easy</button>
         <button onclick="setDifficulty(2)">Medium</button>
         <button onclick="setDifficulty(3)">Hard</button>
         <br>
-        <br>
         <form>Sequence length: <input type="number" id="seqLength" min="3" max="9"></form>
+        <br>
+        <button onclick="leftClick()">Left</button><button onclick="upClick()">Up</button><button onclick="downClick()">Down</button><button onclick="rightClick()">Right</button>
         <p id="diff">Medium</p>
         <br>
     </body>
