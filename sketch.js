@@ -14,115 +14,135 @@ function setup()
 	createCanvas(1030,300);
 }
 
+function leftClick()
+{
+	if(sequence[presses] == 4) // If correct
+	{
+		stroke('#e2ea88');
+		fill('#b6c138');
+		rect(100 * (presses + 1),30,100,100);
+		fill('#e2ea88');
+	}
+	else
+	{
+		stroke('#ea9588');
+		fill('#992a1a');
+		rect(100 * (presses + 1),30,100,100);
+		fill('#ea9588');
+	}
+
+	triangle(100 * (presses + 1) + 80, 50, 100 * (presses + 1) + 80, 110, 100 * (presses + 1) + 20, 80);
+	
+	presses++;
+
+	if(presses > sequenceLength - 1)
+	{
+		document.removeEventListener('keydown',startClicking);
+		showActual();
+	}
+}
+
+function upClick()
+{
+	if(sequence[presses] == 1) // If correct
+	{
+		stroke('#e2ea88');
+		fill('#b6c138');
+		rect(100 * (presses + 1),30,100,100);
+		fill('#e2ea88');
+	}
+	else
+	{
+		stroke('#ea9588');
+		fill('#992a1a');
+		rect(100 * (presses + 1),30,100,100);
+		fill('#ea9588');
+	}
+
+	triangle(100 * (presses + 1) + 80, 110, 100 * (presses + 1) + 20, 110, 100 * (presses + 1) + 50, 50);
+
+	presses++;
+
+	if(presses > sequenceLength - 1)
+	{
+		document.removeEventListener('keydown',startClicking);
+		showActual();
+	}
+}
+
+function rightClick()
+{
+	if(sequence[presses] == 2) // If correct
+	{
+		stroke('#e2ea88');
+		fill('#b6c138');
+		rect(100 * (presses + 1),30,100,100);
+		fill('#e2ea88');
+	}
+	else
+	{
+		stroke('#ea9588');
+		fill('#992a1a');
+		rect(100 * (presses + 1),30,100,100);
+		fill('#ea9588');
+	}
+
+	triangle(100 * (presses + 1) + 20, 50, 100 * (presses + 1) + 20, 110, 100 * (presses + 1) + 80, 80);
+
+	presses++;
+
+	if(presses > sequenceLength - 1)
+	{
+		document.removeEventListener('keydown',startClicking);
+		showActual();
+	}
+}
+
+function downClick()
+{
+	if(sequence[presses] == 3) // If correct
+	{
+		stroke('#e2ea88');
+		fill('#b6c138');
+		rect(100 * (presses + 1),30,100,100);
+		fill('#e2ea88');
+	}
+	else
+	{
+		stroke('#ea9588');
+		fill('#992a1a');
+		rect(100 * (presses + 1),30,100,100);
+		fill('#ea9588');
+	}
+
+	triangle(100 * (presses + 1) + 80, 50, 100 * (presses + 1) + 20, 50, 100 * (presses + 1) + 50, 110);
+
+	presses++;
+
+	if(presses > sequenceLength - 1)
+	{
+		document.removeEventListener('keydown',startClicking);
+		showActual();
+	}
+}
+
 function startClicking(event)
 {
 	if (event.keyCode == 37) 
     {
-    	if(sequence[presses] == 4) // If correct
-    	{
-    		stroke('#e2ea88');
-			fill('#b6c138');
-			rect(100 * (presses + 1),30,100,100);
-			fill('#e2ea88');
-    	}
-    	else
-    	{
-    		stroke('#ea9588');
-			fill('#992a1a');
-			rect(100 * (presses + 1),30,100,100);
-			fill('#ea9588');
-    	}
-
-    	triangle(100 * (presses + 1) + 80, 50, 100 * (presses + 1) + 80, 110, 100 * (presses + 1) + 20, 80);
-    	
-		presses++;
-
-    	if(presses > sequenceLength - 1)
-		{
-			document.removeEventListener('keydown',startClicking);
-			showActual();
-		}
+    	leftClick();
     } 
     else if (event.keyCode == 38)
     {
-    	if(sequence[presses] == 1) // If correct
-    	{
-    		stroke('#e2ea88');
-			fill('#b6c138');
-			rect(100 * (presses + 1),30,100,100);
-			fill('#e2ea88');
-    	}
-    	else
-    	{
-    		stroke('#ea9588');
-			fill('#992a1a');
-			rect(100 * (presses + 1),30,100,100);
-			fill('#ea9588');
-    	}
-
-		triangle(100 * (presses + 1) + 80, 110, 100 * (presses + 1) + 20, 110, 100 * (presses + 1) + 50, 50);
-
-    	presses++;
-
-    	if(presses > sequenceLength - 1)
-		{
-			document.removeEventListener('keydown',startClicking);
-			showActual();
-		}
+    	upClick();
     }
     else if (event.keyCode == 39)
     {
-    	if(sequence[presses] == 2) // If correct
-    	{
-    		stroke('#e2ea88');
-			fill('#b6c138');
-			rect(100 * (presses + 1),30,100,100);
-			fill('#e2ea88');
-    	}
-    	else
-    	{
-    		stroke('#ea9588');
-			fill('#992a1a');
-			rect(100 * (presses + 1),30,100,100);
-			fill('#ea9588');
-    	}
-
-    	triangle(100 * (presses + 1) + 20, 50, 100 * (presses + 1) + 20, 110, 100 * (presses + 1) + 80, 80);
-
-    	presses++;
-
-    	if(presses > sequenceLength - 1)
-		{
-			document.removeEventListener('keydown',startClicking);
-			showActual();
-		}
+    	rightClick();
     }
     else if (event.keyCode == 40)
     {
-    	if(sequence[presses] == 3) // If correct
-    	{
-    		stroke('#e2ea88');
-			fill('#b6c138');
-			rect(100 * (presses + 1),30,100,100);
-			fill('#e2ea88');
-    	}
-    	else
-    	{
-    		stroke('#ea9588');
-			fill('#992a1a');
-			rect(100 * (presses + 1),30,100,100);
-			fill('#ea9588');
-    	}
-
-    	triangle(100 * (presses + 1) + 80, 50, 100 * (presses + 1) + 20, 50, 100 * (presses + 1) + 50, 110);
-
-    	presses++;
-
-    	if(presses > sequenceLength - 1)
-		{
-			document.removeEventListener('keydown',startClicking);
-			showActual();
-		}
+    	downClick();
     }
 }
 
