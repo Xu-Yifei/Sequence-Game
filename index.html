@@ -1,24 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sequence Game</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
-        <script src="sketch.js"></script>
-        </head>
-    <body>
-        Note: This game is not optimized for mobile.<br>
-        Difficulty:
-        <button onclick="drawSequence()">Start</button>
-        <button onclick="setDifficulty(1)">Easy</button>
-        <button onclick="setDifficulty(2)">Medium</button>
-        <button onclick="setDifficulty(3)">Hard</button>
-        <br>
-        <form>Sequence length: <input type="number" id="seqLength" min="3" max="9"></form>
-        <br>
-        <button onclick="leftClick()">Left</button><button onclick="upClick()">Up</button><button onclick="downClick()">Down</button><button onclick="rightClick()">Right</button>
-        <p id="diff">Medium</p>
-        <br>
-    </body>
-</html> 
+html {
+	margin-right: 4%;
+	margin-left: 4%;
+}
+
+body {
+	font-family: "Open Sans";
+	color: #545454;
+	margin: 10%;
+	max-width: 40em;
+	background-color: #f9f9f7;
+}
+
+p {
+	color: #545454;
+	padding-right: 3%;
+	padding-left: 3%;
+	line-height: 150%;
+}
+
+hr {
+	color: #ffffff77;
+	width: 99.8%;
+	size: 1px;
+	border-width: 1px;
+}
+
+.smalltext {
+	font-size: 75%;
+}
+
+.bigtext {
+	font-family: "Arial";
+	font-size: 350%;
+	line-height: 0;
+	color: #444444;
+}
+
+.mediumtext {
+	font-family: "Arial";
+	font-size: 200%;
+	line-height: 0;
+	color: #444444;
+}
+
+.panel {
+	border-radius: 5px;
+	display: inline-block;
+	word-wrap: break-word;
+	width: 100%;
+	-webkit-box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.75);
+	margin-top: 5%;
+	background-color: #ffffff;
+}
+
+body {
+	
+	margin: auto;
+}
