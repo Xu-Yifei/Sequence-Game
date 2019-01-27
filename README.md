@@ -1,5 +1,5 @@
 # Sequence-Game
-Link to game: https://yfeix.github.io/Sequence-Game/
+Link to game: https://yfxu.github.io/Sequence-Game/
 
 Generate a random sequence that you have to memorize within a short time frame! Test how accurate your memory is by inputing the corresponding keys that showed up. This project was an exercise for myself to gain practice with the [p5](https://p5js.org/) library.
 
